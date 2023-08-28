@@ -6,7 +6,8 @@
 <%@ page import="modelo.EstudianteDAO" %>
 <!DOCTYPE html>
 <%
-    if(request.getSession().getAttribute("cc")==null) response.sendRedirect("Login.jsp");
+    response.sendRedirect("Login.jsp");
+    if(request.getSession().getAttribute("ID")==null) response.sendRedirect("Login.jsp");   
 %>
 <html>
     <head>
@@ -19,12 +20,13 @@
         <link rel="icon" type="image/x-icon" href="imagenes/PalomaSentá.png">
     </head>
     <body>
+        <%=request.getSession().getAttribute("ID")%>
         <%
            CursoDAO cd = new CursoDAO();
            
-           String cc = (String) request.getSession().getAttribute("cc");
+           int ID = (int) request.getSession().getAttribute("ID");
            
-           request.setAttribute("ListaCursos", cd.getCursos(cc));
+           request.setAttribute("ListaCursos", cd.getCursos(ID));
 
         %>
         <jsp:include page="vista/BarraSuperior.jsp"/>

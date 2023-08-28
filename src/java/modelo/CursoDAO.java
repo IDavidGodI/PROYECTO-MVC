@@ -15,13 +15,13 @@ public class CursoDAO {
     
     
     
-    public ArrayList<Curso> getCursos(String cc)throws SQLException{
+    public ArrayList<Curso> getCursos(int ID)throws SQLException{
         ArrayList<Curso> cursos = null;
         
-        String consulta = "SELECT * FROM curso WHERE cc_profesor=?";
+        String consulta = "SELECT * FROM curso WHERE id_profesor=?";
         
         ps = con.prepareStatement(consulta);
-        ps.setString(1,cc);
+        ps.setInt(1,ID);
         ResultSet rs = ps.executeQuery();
         
         while (rs.next()){
@@ -48,7 +48,7 @@ public class CursoDAO {
         
         eliminarEstudiantes(cod_curso);
         
-        String consulta = "UPDATE CURSO SET CC_PROFESOR=NULL WHERE COD_CURSO=?";
+        String consulta = "UPDATE CURSO SET ID_PROFESOR=NULL WHERE COD_CURSO=?";
         ps = con.prepareStatement(consulta);
         ps.setString(1, cod_curso);
         ps.executeUpdate();

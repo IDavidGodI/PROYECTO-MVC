@@ -34,7 +34,7 @@ public class CalificarEstudiante extends HttpServlet {
         
         try {
             if (!s_nota.matches(nota_regex) || s_nota.isEmpty()) throw new NotaNoValida();
-            if (!ed.ValidarEstudiante(cc)) throw new CedulaNoValida();
+            if (!ed.ValidarEstudiante(cc)) throw new CorreoNoValido();
             
             float nota = Float.parseFloat(s_nota);
             if (nota<0 || nota>5) throw new NotaNoValida();
@@ -43,7 +43,7 @@ public class CalificarEstudiante extends HttpServlet {
 
             request.setAttribute("cod_curso", ed.GetMateriaInscrita(cc));
             request.getRequestDispatcher("index.jsp").forward(request,response);
-        }catch(CedulaNoValida e){
+        }catch(CorreoNoValido e){
             errores.add("Esta cédula no fue encontrada.");
             System.out.println("Cedula no encontrada");
             hayErrores = true;

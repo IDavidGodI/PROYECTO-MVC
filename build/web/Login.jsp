@@ -25,8 +25,13 @@
             <div class="row h-100 justify-content-center align-items-center ">
               <form method="post" action="IngresoProfesor" class="col-12 bg-light rounded p-1">
                 <div class="form-group m-4">
-                  <label for="ccProfesor">Cedula de profesor</label>
-                  <input type="text" name="cc_profesor" class="form-control" id="ccProfesor" placeholder="CC PROFESOR">
+                  <label for="correoProfesor">Correo de profesor</label>
+                  <input type="text" name="correo" class="form-control" id="correoProfesor" placeholder="Correo electronico">
+                </div>
+                  
+                <div class="form-group m-4">
+                  <label for="claveProfesor">Clave de su cuenta</label>
+                  <input type="password" name="clave" class="form-control" id="claveProfesor" placeholder="Clave">
                 </div>
                   <div class="d-grid gap-2 m-4">
                     <button type="submit" class="btn btn-primary">Ingresar</button>  

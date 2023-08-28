@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ingresar</title>
+        <title>Registrarse</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" type="image/x-icon" href="imagenes/PalomaSentá.png">
@@ -33,8 +33,12 @@
                   <label for="claveProfesor">Clave de su cuenta</label>
                   <input type="password" name="clave" class="form-control" id="claveProfesor" placeholder="Clave">
                 </div>
+                <div class="form-group m-4">
+                  <label for="cClaveProfesor">Confirme la clave</label>
+                  <input type="password" name="cclave" class="form-control" id="cClaveProfesor" placeholder="Confirmar Clave">
+                </div>
                   <div class="d-grid gap-2 m-4">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>  
+                    <button type="submit" class="btn btn-primary">Registrarse</button>  
                   </div>
                 <jsp:include page="vista/ListaErrores.jsp" />
               </form>   

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controlador;
 
 import java.io.IOException;
@@ -21,23 +17,8 @@ import modelo.ProfesorDAO;
 import modelo.Profesor;
 
 public class IngresoProfesor extends HttpServlet {
-    String cc_regex = "^[0-9]+$";
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet IngresoProfesor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet IngresoProfesor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+    String correo_rgx = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,7 +27,8 @@ public class IngresoProfesor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cc = request.getParameter("cc_profesor");
+        String correo = request.getParameter("correo");
+        String clave = request.getParameter("clave");
         ProfesorDAO pd = new ProfesorDAO();
         
         HttpSession sesion = request.getSession();
@@ -54,18 +36,29 @@ public class IngresoProfesor extends HttpServlet {
         ArrayList<String> errores = new ArrayList<>();
         boolean hayErrores = false;
         try{
-            if (!cc.matches(cc_regex))throw new CedulaNoValida();
-            Profesor p = pd.getProfesor(cc);
-            if (p==null) throw new CedulaNoValida();
+            if (!correo.matches(correo_rgx))throw new CorreoNoValido();
+            if (clave.length()<6) throw new ClaveNoValida();
+            if (!pd.validarProfesor(correo, clave)) throw new CredencialesInvalidas();
             
-            sesion.setAttribute("cc", p.getCc());
+            Profesor p = pd.getProfesor(correo);
+            if (p==null) throw new CorreoNoValido();
+            
+            sesion.setAttribute("ID", p.getID());
             sesion.setAttribute("nombre", p.getNombre());
             sesion.setAttribute("correo", p.getCorreo());
             
             response.sendRedirect("index.jsp");        
-        }catch(CedulaNoValida e){
-            errores.add("Esta cédula no fue encontrada.");
-            System.out.println("Cedula no encontrada");
+        }catch(CorreoNoValido e){
+            errores.add("Este correo no es valido.");
+            System.out.println("Correo no encontrado");
+            hayErrores = true;
+        } catch (ClaveNoValida ex) {
+            errores.add("La clave debe tener minimo 6 caracteres");
+            System.out.println("Clave corta");
+            hayErrores = true;
+        } catch (CredencialesInvalidas ex) {
+            errores.add("La informacion no es valida");
+            System.out.println("credenciales");
             hayErrores = true;
         } catch (SQLException ex) {
             errores.add("Parece que hay problemas para conectar con la base de datos. Intente de nuevo mas tarde.");

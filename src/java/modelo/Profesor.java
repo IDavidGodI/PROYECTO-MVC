@@ -2,20 +2,20 @@
 package modelo;
 
 public class Profesor {
-    public String cc, nombre, correo;
-
-    public Profesor(String cc, String nombre, String correo) {
-        this.cc = cc;
+    public String nombre, correo;
+    public int ID;
+    public Profesor(int id, String nombre, String correo) {
+        this.ID = id;
         this.nombre = nombre;
         this.correo = correo;
     }
 
-    public String getCc() {
-        return cc;
+    public int getID() {
+        return ID;
     }
 
-    public void setCc(String cc) {
-        this.cc = cc;
+    public void setID(int id) {
+        this.ID = id;
     }
 
     public String getNombre() {
