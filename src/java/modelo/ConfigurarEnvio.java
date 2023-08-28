@@ -16,15 +16,15 @@ public class ConfigurarEnvio {
     public static void setCredenciales(File archivoConf,String correo, String clave) throws IOException{
         Properties propiedades = new Properties();
         if (!archivoConf.exists()){
-            File carpeta = new File(Info.DIR_PROPIEDADES);
+            File carpeta = new File(Info.DIR_CREDENCIALES);
             carpeta.mkdir();
             archivoConf.createNewFile();
         }
 
         FileWriter wArchivo = new FileWriter(archivoConf);
         BufferedWriter bArchivo = new BufferedWriter(wArchivo);
-        propiedades.put(Info.PROP_CORREO, correo);
-        propiedades.put(Info.PROP_CLAVE, clave);
+        propiedades.put(Info.P_CORREO_SMTP, correo);
+        propiedades.put(Info.P_CLAVE_SMTP, clave);
         
         
         propiedades.store(bArchivo,"Credenciales de la direccion de correo que enviara los emails");
@@ -36,6 +36,7 @@ public class ConfigurarEnvio {
         String clave; 
         JPasswordField campoClave = new JPasswordField();
         int ok = JOptionPane.showConfirmDialog(null, campoClave, "Ingresar contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        // atswrmsjrhmrfrag
 
         if (ok == JOptionPane.OK_OPTION) {
           clave = new String(campoClave.getPassword());

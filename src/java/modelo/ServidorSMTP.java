@@ -13,14 +13,14 @@ import javax.mail.internet.*;
 public class ServidorSMTP {
     private static Properties propiedades;
     private static void cargarConfiguracion() throws InvalidParameterException, IOException {
-        File f = new File(Info.RUTA_PROPIEDADES);
+        File f = new File(Info.R_CREDENCIALES_SMPT);
         if (!f.exists()) ConfigurarEnvio.setCredenciales(f);
         System.out.println("Archivo de credenciales: "+f.getAbsolutePath());
         InputStream is = new FileInputStream(f);
         
         propiedades.load(is);
-        if (propiedades.get(Info.PROP_CORREO) == null || ((String)propiedades.get(Info.PROP_CORREO)).isEmpty() ||
-            propiedades.get(Info.PROP_CLAVE) == null || ((String)propiedades.get(Info.PROP_CLAVE)).isEmpty())
+        if (propiedades.get(Info.P_CORREO_SMTP) == null || ((String)propiedades.get(Info.P_CORREO_SMTP)).isEmpty() ||
+            propiedades.get(Info.P_CLAVE_SMTP) == null || ((String)propiedades.get(Info.P_CLAVE_SMTP)).isEmpty())
         {
             ConfigurarEnvio.setCredenciales(f);
             cargarConfiguracion();
@@ -42,8 +42,8 @@ public class ServidorSMTP {
         propiedades.put("mail.smtp.ssl.protocols", "TLSv1.2");
         propiedades.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         
-        final String remitente = propiedades.getProperty(Info.PROP_CORREO);
-        final String clave = propiedades.getProperty(Info.PROP_CLAVE);
+        final String remitente = propiedades.getProperty(Info.P_CORREO_SMTP);
+        final String clave = propiedades.getProperty(Info.P_CLAVE_SMTP);
         
         Session session = Session.getInstance(propiedades, new javax.mail.Authenticator() {
              protected PasswordAuthentication getPasswordAuthentication() {

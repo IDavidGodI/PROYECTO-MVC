@@ -1,14 +1,13 @@
 package modelo;
 
 public class Estudiante {
-    String cc, nombre;
-    int cod_materia;
+    String cc, nombre, cod_curso;
     float nota;
 
-    public Estudiante(String cc, String nombre, int cod_materia, float nota) {
+    public Estudiante(String cc, String nombre, String cod_materia, float nota) {
         this.cc = cc;
         this.nombre = nombre;
-        this.cod_materia = cod_materia;
+        this.cod_curso = cod_materia;
         this.nota = nota;
     }
 
@@ -28,12 +27,12 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public int getCod_materia() {
-        return cod_materia;
+    public String getCod_curso() {
+        return cod_curso;
     }
 
-    public void setCod_materia(int cod_materia) {
-        this.cod_materia = cod_materia;
+    public void setCod_curso(String cod_materia) {
+        this.cod_curso = cod_materia;
     }
 
     public float getNota() {

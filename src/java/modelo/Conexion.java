@@ -20,14 +20,24 @@ public class Conexion {
     Connection conexion =  null;
     private Conexion() throws IOException {
         
-        String bd = "ucc";
+        credenciales= new Properties();
+        cargarConfiguracion();
+        String bd = "UCC";
+        String usuario = credenciales.getProperty(Info.P_USUARIO_BD);
+        String clave = credenciales.getProperty(Info.P_CLAVE_BD);
         String url = String.format(
-                "jdbc:mysql://localhost:3306/%s"
-                , bd
+                "jdbc:sqlserver://localhost:1433;"
+                        + "databaseName=%s;"
+                        + "user=%s;"
+                        + "password=%s;"
+                        + "encrypt=false;"
+                        + "trustServerCertificate=false;"
+                        + "loginTimeout=20;"
+                , bd,usuario,clave
         );
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection(url, "root", "");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(url);
         } catch (SQLException ex) {
             System.out.println(url);
             Logger.getLogger(Conexion.class.getName()).log(Level.INFO, null, ex);
@@ -43,4 +53,59 @@ public class Conexion {
         }
         return sConexion.conexion;
     }
+    
+    public void setCredenciales(File archivoConf,String correo, String clave) throws IOException{
+        
+        if (!archivoConf.exists()){
+            File carpeta = new File(Info.DIR_CREDENCIALES);
+            carpeta.mkdir();
+            archivoConf.createNewFile();
+        }
+
+        FileWriter wArchivo = new FileWriter(archivoConf);
+        BufferedWriter bArchivo = new BufferedWriter(wArchivo);
+        credenciales.put(Info.P_USUARIO_BD, correo);
+        credenciales.put(Info.P_CLAVE_BD, clave);
+        
+        
+        credenciales.store(bArchivo,"Credenciales de la conexion a la base de datos de SQL SERVER");
+        System.out.println("Archivo de credenciales creado");
+    }
+    
+    public void setCredenciales(File archivoConf) throws IOException{
+        
+        String usuario = JOptionPane.showInputDialog("Nombre de usuario:");
+        System.out.println("USUARIO: "+usuario);
+        String clave; 
+        JPasswordField campoClave = new JPasswordField();
+        int ok = JOptionPane.showConfirmDialog(null, campoClave, "Ingresar contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (ok == JOptionPane.OK_OPTION) {
+            clave = new String(campoClave.getPassword());
+            try {
+                setCredenciales(archivoConf, usuario, clave);
+            } catch (IOException ex) {
+                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return;
+        }
+        throw new IOException();
+    }
+    
+    private void cargarConfiguracion() throws IOException{
+        File f = new File(Info.R_CREDENCIALES_BD);
+        if (!f.exists()) setCredenciales(f);
+        System.out.println("Archivo de credenciales SQL Server: "+f.getAbsolutePath());
+        FileInputStream is = new FileInputStream(f);
+        
+        credenciales.load(is);
+        if (credenciales.get(Info.P_USUARIO_BD) == null || ((String)credenciales.get(Info.P_USUARIO_BD)).isEmpty() ||
+            credenciales.get(Info.P_CLAVE_BD) == null || ((String)credenciales.get(Info.P_CLAVE_BD)).isEmpty())
+        {
+            setCredenciales(f);
+            cargarConfiguracion();
+        }
+    }
+    
+    
 }

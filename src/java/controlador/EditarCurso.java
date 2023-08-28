@@ -36,14 +36,12 @@ public class EditarCurso extends HttpServlet {
         String nombre = request.getParameter("nombre_curso");
         String hora_i = request.getParameter("hora_i");
         String hora_f = request.getParameter("hora_f");
-        String codigo_s = request.getParameter("cod_curso");
-        Integer codigo = null;
+        String codigo = request.getParameter("cod_curso");
         ArrayList<String> errores = new ArrayList<>();
         boolean hayErrores = false;
         CursoDAO cd = new CursoDAO();
         
         try {
-            codigo = Integer.parseInt(codigo_s);
             if (nombre.isEmpty()){ 
                 errores.add("El nombre del curso no puede estar vacio. 🤨");
                 throw new InfoCursoNoValida();

@@ -29,7 +29,7 @@ public class STablaCursos extends HttpServlet {
         HttpSession sesion = request.getSession();
         
         CursoDAO cd = new CursoDAO();
-        int codigo = Integer.parseInt((String) request.getParameter("codigo"));
+        String codigo = (String) request.getParameter("codigo");
         try {
             if (request.getParameter("ver") != null) {
                 request.setAttribute("cod_curso", codigo);

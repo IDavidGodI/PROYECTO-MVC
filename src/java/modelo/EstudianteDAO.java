@@ -27,7 +27,7 @@ public class EstudianteDAO {
             Estudiante e = new Estudiante(
                 rs.getString(1),
                 rs.getString(3),
-                rs.getInt(2),
+                rs.getString(2),
                 rs.getFloat(4)
             );
             if (estudiantes==null)  estudiantes = new ArrayList<>();

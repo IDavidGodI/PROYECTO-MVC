@@ -21,8 +21,8 @@
     <tbody>
         <% 
         List<Curso> cursos = (List<Curso>) request.getAttribute("ListaCursos");
-        int seleccionado = -1;
-        if (request.getAttribute("cod_curso")!=null) seleccionado = (int) request.getAttribute("cod_curso");
+        String seleccionado = null;
+        if (request.getAttribute("cod_curso")!=null) seleccionado = (String) request.getAttribute("cod_curso");
         boolean esSeleccionada = false;
         if (cursos != null)
             for (Curso c : cursos) {

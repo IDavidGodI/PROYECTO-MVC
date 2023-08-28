@@ -1,10 +1,10 @@
 package modelo;
 
 public class Curso {
-    int cod;
-    String nombre, cc_profesor, hora_i, hora_f;
+    
+    String cod,nombre, cc_profesor, hora_i, hora_f;
 
-    public Curso(int cod, String nombre, String cc_profesor, String hora_i, String hora_f) {
+    public Curso(String cod, String nombre, String cc_profesor, String hora_i, String hora_f) {
         this.cod = cod;
         this.nombre = nombre;
         this.cc_profesor = cc_profesor;
@@ -12,11 +12,11 @@ public class Curso {
         this.hora_f = hora_f;
     }
 
-    public int getCod() {
+    public String getCod() {
         return cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 
