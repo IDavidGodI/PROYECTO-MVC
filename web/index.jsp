@@ -46,7 +46,7 @@
                   <%
                     if (request.getAttribute("cod_curso")!=null){
                         EstudianteDAO ed = new EstudianteDAO();
-                        int codigo = (int) request.getAttribute("cod_curso");
+                        String codigo = (String) request.getAttribute("cod_curso");
                         request.setAttribute("ListaEstudiantes", ed.getEstudiantes(codigo));
                   %>
                     <h2 class="fw-bold">Estudiantes de <%= request.getAttribute("nombre_curso") %></h2>

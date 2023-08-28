@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/vista/EditarNota.jsp</file>
+            <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/ConfigurarEnvio.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/META-INF/context.xml</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/vista/BarraInferior.jsp</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/vista/EditarCurso.jsp</file>
@@ -11,6 +12,7 @@
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/CalificarEstudiante.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/EditarCurso.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/imagenes/PalomaSentá.png</file>
+            <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/Profesor.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/vista/ListaErrores.jsp</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/Per.css</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/web/vista/BarraSuperior.jsp</file>
@@ -22,7 +24,9 @@
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/Curso.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/CedulaNoValida.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/TablaEstudiantesAc.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/ServidorSMTP.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/InfoCursoNoValida.java</file>
+            <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/Estudiante.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/NotaNoValida.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/controlador/Salir.java</file>
             <file>file:/C:/Users/Lenovo/Desktop/Proyecto%20Patrones%20de%20diseño/PATRON_MVC/src/java/modelo/Conexion.java</file>

@@ -14,20 +14,20 @@ public class EstudianteDAO {
         con = Conexion.getConexion();
     }
     
-    public ArrayList<Estudiante> getEstudiantes(int cm)throws SQLException{
+    public ArrayList<Estudiante> getEstudiantes(String cm)throws SQLException{
         ArrayList<Estudiante> estudiantes = null;
         
-        String consulta = "SELECT * FROM estudiante WHERE cod_curso=?";
+        String consulta = "SELECT e.CC_ESTUDIANTE,NOMBRE, c.COD_CURSO, NOTA FROM CURSO c, INSCRIPCION_CURSO i, ESTUDIANTE e WHERE i.CC_ESTUDIANTE = e.CC_ESTUDIANTE AND i.COD_CURSO = c.COD_CURSO AND i.COD_CURSO=?;";
         
         ps = con.prepareStatement(consulta);
-        ps.setInt(1,cm);
+        ps.setString(1,cm);
         ResultSet rs = ps.executeQuery();
         
         while (rs.next()){
             Estudiante e = new Estudiante(
                 rs.getString(1),
-                rs.getString(3),
                 rs.getString(2),
+                rs.getString(3),
                 rs.getFloat(4)
             );
             if (estudiantes==null)  estudiantes = new ArrayList<>();

@@ -39,7 +39,9 @@ public class Conexion {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conexion = DriverManager.getConnection(url);
         } catch (SQLException ex) {
+            
             System.out.println(url);
+            limpiarConfiguracion();
             Logger.getLogger(Conexion.class.getName()).log(Level.INFO, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,5 +109,8 @@ public class Conexion {
         }
     }
     
-    
+    private void limpiarConfiguracion(){
+        File f = new File(Info.R_CREDENCIALES_BD);
+        if (f.exists()) f.delete();
+    }
 }

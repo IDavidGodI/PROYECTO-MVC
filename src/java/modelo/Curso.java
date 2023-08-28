@@ -37,6 +37,10 @@ public class Curso {
     }
 
     public String getHora_i() {
+        int punto = hora_i.indexOf(".");
+        if (punto>0){
+            return hora_i.substring(0,punto);
+        }
         return hora_i;
     }
 
@@ -45,6 +49,10 @@ public class Curso {
     }
 
     public String getHora_f() {
+        int punto = hora_f.indexOf(".");
+        if (punto>0){
+            return hora_f.substring(0,punto);
+        }
         return hora_f;
     }
 

@@ -13,12 +13,12 @@ public class ProfesorDAO {
         con = Conexion.getConexion();
     }
     
-    public Profesor getProfesor(String cc) throws SQLException{
+    public Profesor getProfesor(String correo) throws SQLException{
         Profesor p = null;
-        String consulta = "SELECT * FROM Profesor WHERE cc_profesor=?";
+        String consulta = "SELECT * FROM Profesor WHERE correo=?";
         
         ps = con.prepareStatement(consulta);
-        ps.setString(1,cc);
+        ps.setString(1,correo);
         ResultSet rs = ps.executeQuery();
         if (rs.next()){
             String rCC = rs.getString(1);

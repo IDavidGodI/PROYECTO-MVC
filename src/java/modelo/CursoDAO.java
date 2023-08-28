@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.sql.Connection;
@@ -31,8 +27,8 @@ public class CursoDAO {
         while (rs.next()){
             Curso c = new Curso(
                 rs.getString(1),
-                rs.getString(2),
                 rs.getString(3),
+                rs.getString(2),
                 rs.getString(4),
                 rs.getString(5)
             );
@@ -52,7 +48,7 @@ public class CursoDAO {
         
         eliminarEstudiantes(cod_curso);
         
-        String consulta = "UPDATE ING_SISTEMAS SET CC_PROFESOR=NULL WHERE COD_CURSO=?";
+        String consulta = "UPDATE CURSO SET CC_PROFESOR=NULL WHERE COD_CURSO=?";
         ps = con.prepareStatement(consulta);
         ps.setString(1, cod_curso);
         ps.executeUpdate();
