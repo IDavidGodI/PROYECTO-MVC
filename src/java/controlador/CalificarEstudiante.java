@@ -1,6 +1,8 @@
 
 package controlador;
 
+import controlador.excepciones.NotaNoValida;
+import controlador.excepciones.CorreoNoValido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

@@ -1,0 +1,33 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "java.util.List"%>
+<%@page import = "Comunes.Formularios"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autenticación de código</title>
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+    <%
+        String estadoCodigo = (String) request.getAttribute("st_cod_verificacion");
+    %>
+    <div class="container">
+        <h2>Autenticación de código</h2>
+        <p>A tu correo fue enviado un codigo de autenticación de 6 dígitos, escribe dicho código:</p>
+        <form method="post" action="FactorAutenticacion">
+                <label for="code">Código:</label>
+                <input type="text" name="codigoVerificacion" estado=<%=estadoCodigo%> id="codigoVerificacion"><br><br>
+                <input type="submit" value="Autenticar">
+                <p>
+                    Ir a
+                    <a href="InicioSesion.jsp"> inicio de sesion </a>
+                    o
+                    <a href="registro.jsp"> registro </a>
+                </p>
+        </form>
+        
+        <jsp:include page="ListaErrores.jsp" />
+        
+    </div>
+</body>
+</html>

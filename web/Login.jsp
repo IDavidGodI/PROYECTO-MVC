@@ -36,6 +36,11 @@
                   <div class="d-grid gap-2 m-4">
                     <button type="submit" class="btn btn-primary">Ingresar</button>  
                   </div>
+                <div class="row g-2 p-2 justify-content-center"> 
+                    <div class="col-auto">
+                        <p>¿Aun no tienes cuenta? <a href="Registro.jsp">Registrate aqui</a></p>
+                    </div>
+                </div>
                 <jsp:include page="vista/ListaErrores.jsp" />
               </form>   
             </div>

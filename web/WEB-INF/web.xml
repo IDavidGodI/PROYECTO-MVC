@@ -24,6 +24,18 @@
         <servlet-name>EditarCurso</servlet-name>
         <servlet-class>controlador.EditarCurso</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroProfesor</servlet-name>
+        <servlet-class>controlador.RegistroProfesor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>envioCorreos</servlet-name>
+        <servlet-class>controlador.envioCorreos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FactorAutenticacion</servlet-name>
+        <servlet-class>controlador.FactorAutenticacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IngresoProfesor</servlet-name>
         <url-pattern>/IngresoProfesor</url-pattern>
@@ -47,6 +59,18 @@
     <servlet-mapping>
         <servlet-name>EditarCurso</servlet-name>
         <url-pattern>/EditarCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroProfesor</servlet-name>
+        <url-pattern>/RegistroProfesor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>envioCorreos</servlet-name>
+        <url-pattern>/envioCorreos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FactorAutenticacion</servlet-name>
+        <url-pattern>/FactorAutenticacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

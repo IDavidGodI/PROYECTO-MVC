@@ -1,4 +1,4 @@
-package controlador;
+package controlador.excepciones;
 
 
 public class NotaNoValida extends Exception{

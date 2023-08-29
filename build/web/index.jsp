@@ -6,8 +6,9 @@
 <%@ page import="modelo.EstudianteDAO" %>
 <!DOCTYPE html>
 <%
-    response.sendRedirect("Login.jsp");
-    if(request.getSession().getAttribute("ID")==null) response.sendRedirect("Login.jsp");   
+    
+    if(request.getSession().getAttribute("ID")==null) response.sendRedirect("Login.jsp");
+    else{
 %>
 <html>
     <head>
@@ -20,10 +21,8 @@
         <link rel="icon" type="image/x-icon" href="imagenes/PalomaSentá.png">
     </head>
     <body>
-        <%=request.getSession().getAttribute("ID")%>
         <%
            CursoDAO cd = new CursoDAO();
-           
            int ID = (int) request.getSession().getAttribute("ID");
            
            request.setAttribute("ListaCursos", cd.getCursos(ID));
@@ -74,3 +73,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </body>
 </html>
+<%}%>
