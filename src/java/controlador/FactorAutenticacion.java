@@ -56,7 +56,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             response.sendRedirect("index.jsp");
             return;
         }
-            
+        errores.add("Hay problemas de conexion con la base de datos, intente mas tarde.");
+        request.setAttribute(Formularios.LISTA_ERRORES, errores);
+        request.getRequestDispatcher("FactorAutenticacion.jsp").forward(request, response);
+        return;
     }
     errores.add("El código de verificación ha expirado");
     request.setAttribute(Formularios.LISTA_ERRORES, errores);

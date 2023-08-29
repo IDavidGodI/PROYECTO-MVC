@@ -25,7 +25,7 @@ import vista.Formularios;
 public class RegistroProfesor extends HttpServlet {
 
     String correo_rgx = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    String nombre_rgx = "^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$";
+    String nombre_rgx = "^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,2}$";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -66,9 +66,7 @@ public class RegistroProfesor extends HttpServlet {
                 request.setAttribute("nombre", nombre);
                 request.setAttribute("registrado",false);
                 
-                request.getRequestDispatcher("envioCorreos").forward(request, response);
-                
-                pd.registrarProfesor(correo, clave, nombre);            
+                request.getRequestDispatcher("envioCorreos").forward(request, response);       
             }
             
         } catch (SQLException ex) {
@@ -80,7 +78,7 @@ public class RegistroProfesor extends HttpServlet {
         
         if (hayErrores){
             request.setAttribute(Formularios.LISTA_ERRORES, errores);
-            request.getRequestDispatcher("Login.jsp").forward(request,response);
+            request.getRequestDispatcher("Registro.jsp").forward(request,response);
         }
     }
 

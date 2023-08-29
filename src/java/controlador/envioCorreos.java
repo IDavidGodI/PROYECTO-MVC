@@ -33,11 +33,11 @@ public class envioCorreos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String codigoVerificacion = GeneradorCodigos.generarCodigoVerificacion();
-        String emailDestino =(String) request.getAttribute("destinatario");
+        String emailDestino =(String) request.getAttribute("correo");
         request.setAttribute("cod_verificacion", codigoVerificacion);
         request.setAttribute("imagen_correo", "https://media.tenor.com/_4v3Nx_hzjwAAAAM/peepo.gif");
         final StringWriter writer = new StringWriter();
-        getServletContext().getRequestDispatcher("/correoVerificacion.jsp").include(request, new HttpServletResponseWrapper(response) {
+        getServletContext().getRequestDispatcher("/vista/FormatoCorreo.jsp").include(request, new HttpServletResponseWrapper(response) {
             public PrintWriter getWriter() throws IOException {
                 return new PrintWriter(writer);
             }
@@ -49,7 +49,7 @@ public class envioCorreos extends HttpServlet {
         {
             HttpSession sesion = request.getSession();
             System.out.println("Codigo generado: "+codigoVerificacion);
-            CodigoVerificacion.setCodigoVerificacion(request, codigoVerificacion, 1);
+            CodigoVerificacion.setCodigoVerificacion(request, codigoVerificacion, 3);
             sesion.setAttribute("correo",request.getAttribute("correo"));
             sesion.setAttribute("clave",request.getAttribute("clave"));
             sesion.setAttribute("nombre",request.getAttribute("nombre"));
@@ -57,9 +57,9 @@ public class envioCorreos extends HttpServlet {
             response.sendRedirect("FactorAutenticacion.jsp");
             return;
         }
-        request.removeAttribute("codVerificacion");
-        request.removeAttribute("imagenCorreo");
-        request.getRequestDispatcher("registro.jsp").forward(request, response);
+        request.removeAttribute("cod_verificacion");
+        request.removeAttribute("imagen_correo");
+        request.getRequestDispatcher("Registro.jsp").forward(request, response);
     }
 
     @Override

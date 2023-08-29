@@ -54,12 +54,12 @@ public class ProfesorDAO {
     }
     public Profesor getProfesor(String correo) throws SQLException{
         Profesor p = null;
-        String consulta = "SELECT * FROM profesor p WHERE correo=?";
+        String consulta = "SELECT p.ID_PROFESOR, p.NOMBRE, p.CORREO FROM profesor p WHERE correo=?";
         
         ps = con.prepareStatement(consulta);
         ps.setString(1,correo);
-        resetPs();
         p = getProfesor();
+        resetPs();
         return p;
     }
     private void resetPs(){
@@ -88,7 +88,7 @@ public class ProfesorDAO {
         return rs.next();
     }
     public boolean validarProfesor(String correo, String clave) throws SQLException{
-        String consulta = "SELECT * FROM usuario WHERE correo=? AND clave=?";
+        String consulta = "SELECT * FROM profesor WHERE correo=? AND clave=?";
         ps = crearStatementProfesor(consulta, correo, clave);
         ResultSet rs = ps.executeQuery();
         resetPs();
@@ -103,6 +103,7 @@ public class ProfesorDAO {
         try {
             ps = crearStatementProfesor(consulta, correo, clave);
             ps.setString(3,nombre);
+            System.out.println(ps.toString());
             filasAfectadas = ps.executeUpdate();
             resetPs();
             

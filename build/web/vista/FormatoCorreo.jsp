@@ -1,33 +1,40 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "java.util.List"%>
-<%@page import = "Comunes.Formularios"%>
+<%--<jsp:include page="/envioCorreos" />--%>
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Autenticación de código</title>
-    <link rel="stylesheet" href="css/formulario.css">
+    <%
+        response.sendRedirect("Registro.jsp");
+    %>
+    <title>Código de verificación</title>
+    <style>
+            body {
+                    font-family: Arial, sans-serif;
+                    background-color: #F7F7F7;
+            }
+            h3 {
+                    text-align: center;
+                    color: #555555;
+            }
+            #codigo {
+                    text-align: center;
+                    font-size: 36px;
+                    color: #2196F3;
+                    margin: 20px 0;
+            }
+            img {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 100%;
+                    height: auto;
+            }
+    </style>
 </head>
 <body>
-    <%
-        String estadoCodigo = (String) request.getAttribute("st_cod_verificacion");
-    %>
-    <div class="container">
-        <h2>Autenticación de código</h2>
-        <p>A tu correo fue enviado un codigo de autenticación de 6 dígitos, escribe dicho código:</p>
-        <form method="post" action="FactorAutenticacion">
-                <label for="code">Código:</label>
-                <input type="text" name="codigoVerificacion" estado=<%=estadoCodigo%> id="codigoVerificacion"><br><br>
-                <input type="submit" value="Autenticar">
-                <p>
-                    Ir a
-                    <a href="InicioSesion.jsp"> inicio de sesion </a>
-                    o
-                    <a href="registro.jsp"> registro </a>
-                </p>
-        </form>
-        
-        <jsp:include page="ListaErrores.jsp" />
-        
-    </div>
+    <h3>Código de verificación:</h3>
+    <div id="codigo"><%= request.getAttribute("cod_verificacion") %></div>
+    <img src="<%= request.getAttribute("imagen_correo") %>" alt="No fue posible cargar el gif :(">
 </body>
 </html>

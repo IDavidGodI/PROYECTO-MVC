@@ -31,7 +31,7 @@ public class ServidorSMTP {
         if (para==null) return false;
 
         
-        
+        System.out.println("tamo vivos");
 
         propiedades = new Properties();
         cargarConfiguracion();

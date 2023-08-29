@@ -25,6 +25,7 @@ public class CodigoVerificacion {
             long expiracion = tiempoCreacion.getTime() + ((long)TIEMPO_EXPIRACION  * 60 * 1000);
             return System.currentTimeMillis() > expiracion;
         }
+        System.out.println(codigoGuardado);
         return true;
     }
     

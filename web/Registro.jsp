@@ -25,6 +25,10 @@
             <div class="row h-100 align-items-center ">
               <form method="post" action="RegistroProfesor" class="col-12 bg-light rounded p-1">
                 <div class="form-group m-4">
+                  <label for="nombreProfesor">Nombres y Apellidos</label>
+                  <input type="text" name="nombre" class="form-control" id="nombreProfesor" placeholder="Nombres y Apellidos">
+                </div>
+                <div class="form-group m-4">
                   <label for="correoProfesor">Correo de profesor</label>
                   <input type="text" name="correo" class="form-control" id="correoProfesor" placeholder="Correo electronico">
                 </div>
