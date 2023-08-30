@@ -78,7 +78,15 @@ public class ProfesorDAO {
         }
         return p;
     }
-    
+    public void agregarMateria(int id_profesor, String cod_curso)throws SQLException{
+        String consulta = "UPDATE CURSO SET ID_PROFESOR=? WHERE COD_CURSO=?";
+        ps = con.prepareStatement(consulta);
+        ps.setInt(1,id_profesor);
+        ps.setString(2, cod_curso);
+        
+        System.out.println(ps.toString());
+        ps.executeUpdate();
+    }
     public boolean correoDuplicado(String correo) throws SQLException{
         String consulta = "SELECT * FROM profesor WHERE correo=?";
         ps = con.prepareStatement(consulta);
