@@ -25,7 +25,7 @@ public class CursoDAO {
         
         ps = con.prepareStatement(consulta);
         if (ID!=null) {
-            consulta = "SELECT * FROM curso WHERE id_profesor=?";
+            consulta = "SELECT COD_CURSO, NOMBRE_CURSO, ID_PROFESOR, HORA_INICIO, HORA_FIN FROM curso WHERE id_profesor=?";
             ps = con.prepareStatement(consulta);
             ps.setInt(1,ID);
         }
@@ -92,3 +92,4 @@ public class CursoDAO {
         return c;
     }
 }
+
