@@ -26,13 +26,13 @@
         boolean esSeleccionada = false;
         if (cursos != null)
             for (Curso c : cursos) {
-                esSeleccionada = c.getCod()==seleccionado;
+                esSeleccionada = c.getCod().equals(seleccionado);
                 if (esSeleccionada) {
                     request.setAttribute("nombre_curso", c.getNombre());
                 }
         %>
             <tr class="align-middle <%= esSeleccionada ? "table-info" : "" %>">
-                
+
                 <th class="text-center" scope="row" ><%= c.getCod() %></th>
                 <td><%= c.getNombre() %></td>
                 <td><%= c.getHora_i() %></td>
@@ -52,7 +52,8 @@
             </tr>
         <% } 
         else %> <tr class="align-middle text-center table-secondary" ><td colspan="7"> No tiene cursos en este momento </td></tr>
-      
-      
+
+
     </tbody>
 </table>
+
