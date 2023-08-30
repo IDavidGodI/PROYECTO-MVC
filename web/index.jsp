@@ -66,7 +66,8 @@
               </div>
             </div>
               <div class="row justify-content-evenly wrap">
-                  <div class="col-xl-5">
+                  <div class="col-xl-5 m-5">
+                      <h2 class="fw-bold">CURSOS DISPONIBLES PARA AGREGAR</h2>
                       <jsp:include page="vista/TablaCursosLibres.jsp"/>
                   </div>
               </div>
