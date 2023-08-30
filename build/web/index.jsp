@@ -65,6 +65,11 @@
                   <%}%>
               </div>
             </div>
+              <div class="row justify-content-evenly wrap">
+                  <div class="col-xl-5">
+                      <jsp:include page="vista/TablaCursosLibres.jsp"/>
+                  </div>
+              </div>
           </div>
               
               

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 
 public class CursoDAO {
@@ -15,20 +16,27 @@ public class CursoDAO {
     
     
     
-    public ArrayList<Curso> getCursos(int ID)throws SQLException{
+    public ArrayList<Curso> getCursos(Integer ID)throws SQLException{
         ArrayList<Curso> cursos = null;
         
-        String consulta = "SELECT * FROM curso WHERE id_profesor=?";
+        String consulta;
+        consulta = "SELECT COD_CURSO, NOMBRE_CURSO, ID_PROFESOR, HORA_INICIO, HORA_FIN FROM curso WHERE id_profesor IS NULL";
+        
         
         ps = con.prepareStatement(consulta);
-        ps.setInt(1,ID);
+        if (ID!=null) {
+            consulta = "SELECT * FROM curso WHERE id_profesor=?";
+            ps = con.prepareStatement(consulta);
+            ps.setInt(1,ID);
+        }
         ResultSet rs = ps.executeQuery();
-        
+        System.out.println("Consulta: "+ps.toString());
+                
         while (rs.next()){
             Curso c = new Curso(
                 rs.getString(1),
-                rs.getString(3),
                 rs.getString(2),
+                rs.getString(3),
                 rs.getString(4),
                 rs.getString(5)
             );

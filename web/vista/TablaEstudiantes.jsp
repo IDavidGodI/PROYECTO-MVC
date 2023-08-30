@@ -4,25 +4,25 @@
     Author     : Lenovo
 --%>
 <%@ page import="java.util.List" %>
-<%@ page import="modelo.Estudiante" %>
+<%@ page import="modelo.Curso" %>
+<%@ page import="modelo.CursoDAO" %>
 <table class="table table-sm table-striped text-center">
     <thead>
       <tr class="align-middle">
         <th scope="col">CEDULA</th>
         <th scope="col">NOMBRE</th>
         <th scope="col">NOTA</th>
-        <th scope="col">ELIMINAR</th>
-        <th scope="col">EDITAR</th>
-
+        <th scope="col">AGREGAR</th>
       </tr>
     </thead>
     <tbody>
       <% 
-        List<Estudiante> estudiantes = (List<Estudiante>) request.getAttribute("ListaEstudiantes");
+        CursoDAO ed = new CursoDAO();
+        List<Curso> estudiantes = ed.;
         String seleccionado = null;
         if (request.getAttribute("cc_estudiante")!=null) seleccionado = (String) request.getAttribute("cc_estudiante");
         if (estudiantes != null)
-            for (Estudiante e : estudiantes) { 
+            for (Curso e : estudiantes) { 
         %>
         <tr class="align-middle <%= e.getCc().equals(seleccionado) ? "table-success" : "" %>">
                 <th class="text-center" scope="row" > <%= e.getCc() %> </th>

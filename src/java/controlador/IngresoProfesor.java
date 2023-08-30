@@ -40,7 +40,6 @@ public class IngresoProfesor extends HttpServlet {
         boolean hayErrores = false;
         try{
             if (!correo.matches(correo_rgx))throw new CorreoNoValido();
-            if (clave.length()<6) throw new ClaveNoValida();
             if (!pd.validarProfesor(correo, clave)) throw new CredencialesInvalidas();
             
             Profesor p = pd.getProfesor(correo);
@@ -54,10 +53,6 @@ public class IngresoProfesor extends HttpServlet {
         }catch(CorreoNoValido e){
             errores.add("Este correo no es valido.");
             System.out.println("Correo no encontrado");
-            hayErrores = true;
-        } catch (ClaveNoValida ex) {
-            errores.add("La clave debe tener minimo 6 caracteres");
-            System.out.println("Clave corta");
             hayErrores = true;
         } catch (CredencialesInvalidas ex) {
             errores.add("La informacion no es valida");
